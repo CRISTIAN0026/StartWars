@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Especies de {{ movie.title }}</h2>
+  <input type="text" placeholder="Buscar especies" [(ngModel)]="searchTerm" (input)="filterSpecies()" class="input-filter">
+  <div *ngIf="filteredSpecies && filteredSpecies.length; else noSpecies">
+    <div class="row">
+      <div *ngFor="let species of filteredSpecies" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card species-card">
+          <div class="card-body">
+            <h3 class="card-title">{{ species.name }}</h3>
+            <p><strong>Clasificación:</strong> {{ species.classification }}</p>
+            <p><strong>Designación:</strong> {{ species.designation }}</p>
+            <p><strong>Altura promedio:</strong> {{ species.average_height }}</p>
+            <p><strong>Esperanza de vida:</strong> {{ species.average_lifespan }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noSpecies>
+    <p>No se encontraron especies.</p>
+  </ng-template>
+</div>

@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Star Jedi';
+  src: url('assets/fonts/Starjedi.ttf') format('truetype');
+}
+
+/* Incluye los estilos propuestos anteriormente aquí */
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Star Jedi', sans-serif;
+  text-align: center;
+}
+
+button.btn {
+  font-family: 'Star Jedi', sans-serif;
+  letter-spacing: 0.1em;
+  background-color: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button.btn:hover {
+  background-color: #ffaa00;
+}
+
+h1 {
+  font-size: 3em;
+  color: #ffcc00;
+  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+}
+
+h2 {
+  font-size: 2em;
+  color: #ffcc00;
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+p {
+    letter-spacing: 0.1em;
+}
+li {
+  margin: 5px 0;
+}
+
+a {
+  color: #ffcc00;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input[type="text"] {
+  font-family: 'Star Jedi', sans-serif;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  max-width: 600px;
+}
+
+.navbar {
+  margin-top: 20px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 18px;
+}
+
+.navbar li a:hover,
+.navbar li a.active {
+  cursor: pointer;
+  color: #0056b3;
+  text-decoration: underline;
+}

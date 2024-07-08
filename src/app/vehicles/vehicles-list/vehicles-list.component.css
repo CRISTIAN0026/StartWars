@@ -1,0 +1,53 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.input-filter {
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #333;
+  color: #ddd;
+}
+
+.row {
+  display: flex;
+  padding: 32px;
+  flex-wrap: wrap;
+  gap: 15px; 
+}
+
+.character-card {
+  flex: 1 1 calc(100%); 
+  max-width: calc(100%);
+  box-sizing: border-box; 
+}
+
+.card {
+  border: 1px solid #555;
+  padding: 10px; 
+  border-radius: 5px;
+  background-color: #333;
+  color: #ddd;
+  transition: transform 0.2s;
+  font-size: 0.7em; 
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #aaa;
+}
+
+.card-title {
+  font-size: 1em;
+  color: #ffcc00;
+  letter-spacing: 0.1em;
+}

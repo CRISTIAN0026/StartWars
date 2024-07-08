@@ -1,0 +1,79 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.card {
+  border: 1px solid #555;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #333;
+  color: #ddd;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #aaa;
+}
+
+.card-title {
+  font-size: 1.5em;
+  color: #ffcc00;
+  letter-spacing: 0.1em;
+}
+
+button.btn {
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.9em;
+}
+
+button.btn-characters {
+  background-color: #ffcc00;
+}
+
+button.btn-characters:hover {
+  background-color: #ffaa00;
+}
+
+button.btn-starships {
+  background-color: #007bff;
+}
+
+button.btn-starships:hover {
+  background-color: #0056b3;
+}
+
+button.btn-vehicles {
+  background-color: #28a745;
+}
+
+button.btn-vehicles:hover {
+  background-color: #1e7e34;
+}
+
+button.btn-species {
+  background-color: #6f42c1;
+}
+
+button.btn-species:hover {
+  background-color: #5a32a3;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Vehículos</h2>
+  <input type="text" placeholder="Buscar vehículos" [(ngModel)]="searchTerm" (input)="filterVehicles()" class="input-filter">
+  <div *ngIf="filteredVehicles && filteredVehicles.length; else noVehicles">
+    <div class="row">
+      <div *ngFor="let vehicle of filteredVehicles" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="card vehicle-card">
+          <div class="card-body">
+            <h3 class="card-title">{{ vehicle.name }}</h3>
+            <p><strong>Modelo:</strong> {{ vehicle.model }}</p>
+            <p><strong>Fabricante:</strong> {{ vehicle.manufacturer }}</p>
+            <p><strong>Coste en créditos:</strong> {{ vehicle.cost_in_credits }}</p>
+            <p><strong>Longitud:</strong> {{ vehicle.length }}</p>
+            <p><strong>Tripulación:</strong> {{ vehicle.crew }}</p>
+            <p><strong>Pasajeros:</strong> {{ vehicle.passengers }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noVehicles>
+    <p>No se encontraron vehículos.</p>
+  </ng-template>
+</div>

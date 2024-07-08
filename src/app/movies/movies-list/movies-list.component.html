@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Películas</h2>
+  <input type="text" placeholder="Buscar películas" (input)="filterMovies($event)" class="input-filter">
+  <div *ngIf="filteredMovies && filteredMovies.length; else noMovies">
+    <div class="row">
+      <div *ngFor="let movie of filteredMovies" class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">{{ movie.title }}</h3>
+            <p><strong>Director:</strong> {{ movie.director }}</p>
+            <p><strong>Productor:</strong> {{ movie.producer }}</p>
+            <p><strong>Fecha de lanzamiento:</strong> {{ movie.release_date }}</p>
+            <div class="button-group">
+              <button class="btn btn-characters" (click)="selectMovie(movie, 'characters')">Personajes</button>
+              <button class="btn btn-starships" (click)="selectMovie(movie, 'starships')">Naves Estelares</button>
+              <button class="btn btn-vehicles" (click)="selectMovie(movie, 'vehicles')">Vehículos</button>
+              <button class="btn btn-species" (click)="selectMovie(movie, 'species')">Especies</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noMovies>
+    <p>No se encontraron películas.</p>
+  </ng-template>
+</div>
