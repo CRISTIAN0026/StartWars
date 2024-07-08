@@ -1,24 +1,30 @@
 <div class="container">
-  <h2>Naves Espaciales</h2>
-  <input type="text" placeholder="Buscar naves" [(ngModel)]="searchTerm" (input)="filterStarships()" class="input-filter">
-  <div *ngIf="filteredStarships && filteredStarships.length; else noStarships">
-    <div class="row">
-      <div *ngFor="let starship of filteredStarships" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card starship-card">
-          <div class="card-body">
-            <h3 class="card-title">{{ starship.name }}</h3>
-            <p><strong>Modelo:</strong> {{ starship.model }}</p>
-            <p><strong>Fabricante:</strong> {{ starship.manufacturer }}</p>
-            <p><strong>Coste en créditos:</strong> {{ starship.cost_in_credits }}</p>
-            <p><strong>Longitud:</strong> {{ starship.length }}</p>
-            <p><strong>Tripulación:</strong> {{ starship.crew }}</p>
-            <p><strong>Pasajeros:</strong> {{ starship.passengers }}</p>
+  <h2>Naves Estelares de {{ movie.title }}</h2>
+  <input type="text" placeholder="Buscar naves estelares" [(ngModel)]="searchTerm" (input)="filterStarships()" class="input-filter">
+
+  <div *ngIf="loading; else starshipsContent">
+    <p>Cargando...</p>
+  </div>
+
+  <ng-template #starshipsContent>
+    <div *ngIf="filteredStarships && filteredStarships.length; else noStarships">
+      <div class="row">
+        <div *ngFor="let starship of filteredStarships" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card starship-card">
+            <div class="card-body">
+              <h3 class="card-title">{{ starship.name }}</h3>
+              <p><strong>Modelo:</strong> {{ starship.model }}</p>
+              <p><strong>Fabricante:</strong> {{ starship.manufacturer }}</p>
+              <p><strong>Coste en créditos:</strong> {{ starship.cost_in_credits }}</p>
+              <p><strong>Longitud:</strong> {{ starship.length }}</p>
+              <p><strong>Capacidad de carga:</strong> {{ starship.cargo_capacity }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <ng-template #noStarships>
-    <p>No se encontraron naves espaciales.</p>
+    <ng-template #noStarships>
+      <p>No se encontraron naves estelares.</p>
+    </ng-template>
   </ng-template>
 </div>

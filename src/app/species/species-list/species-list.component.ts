@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwapiService } from '../../swapi.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-species-list',
@@ -12,6 +13,7 @@ export class SpeciesListComponent implements OnInit {
   filteredSpecies: any[] = [];
   searchTerm: string = '';
   movie: any;
+  loading: boolean = false;
 
   constructor(private swapiService: SwapiService, private router: Router) {
     const navigation = this.router.getCurrentNavigation();
@@ -27,13 +29,20 @@ export class SpeciesListComponent implements OnInit {
   }
 
   fetchSpecies(urls: string[]) {
-    urls.forEach(url => {
-      this.swapiService.getFromUrl(url).subscribe(response => {
-        console.log(response);
-        this.species.push(response);
+    this.loading = true;
+    const speciesRequests = urls.map(url => this.swapiService.getFromUrl(url));
+
+    forkJoin(speciesRequests).subscribe(
+      responses => {
+        this.species = responses;
         this.filteredSpecies = this.species;
-      });
-    });
+        this.loading = false; 
+      },
+      error => {
+        console.error('Error fetching species', error);
+        this.loading = false; 
+      }
+    );
   }
 
   filterSpecies() {

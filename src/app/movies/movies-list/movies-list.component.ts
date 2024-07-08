@@ -16,6 +16,7 @@ export class MoviesListComponent implements OnInit {
   vehicles: any[] = [];
   species: any[] = [];
   activeDetail: string = '';
+  loading: boolean = false;
 
   constructor(private swapiService: SwapiService, private router: Router) {}
 
@@ -24,10 +25,15 @@ export class MoviesListComponent implements OnInit {
   }
 
   fetchMovies() {
+    this.loading = true;  
     this.swapiService.getMovies().subscribe(data => {
       console.log(data);
       this.movies = data.results;
       this.filteredMovies = this.movies;
+      this.loading = false; 
+    }, error => {
+      this.loading = false;  
+      console.error('Error fetching movies', error);
     });
   }
 

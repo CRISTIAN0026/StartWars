@@ -1,22 +1,29 @@
 <div class="container">
   <h2>Personajes de {{ movie.title }}</h2>
   <input type="text" placeholder="Buscar personajes" [(ngModel)]="searchTerm" (input)="filterCharacters()" class="input-filter">
-  <div *ngIf="filteredCharacters && filteredCharacters.length; else noCharacters">
-    <div class="row">
-      <div *ngFor="let character of filteredCharacters" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card character-card">
-          <div class="card-body">
-            <h3 class="card-title">{{ character.name }}</h3>
-            <p><strong>Altura:</strong> {{ character.height }}</p>
-            <p><strong>Género:</strong> {{ character.gender }}</p>
-            <p><strong>Año de nacimiento:</strong> {{ character.birth_year }}</p>
-            <p><strong>Película:</strong> {{ movie.title }}</p>
+  
+  <div *ngIf="loading; else characterContent">
+    <p>Cargando...</p>
+  </div>
+  
+  <ng-template #characterContent>
+    <div *ngIf="filteredCharacters && filteredCharacters.length; else noCharacters">
+      <div class="row">
+        <div *ngFor="let character of filteredCharacters" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="card character-card">
+            <div class="card-body">
+              <h3 class="card-title">{{ character.name }}</h3>
+              <p><strong>Altura:</strong> {{ character.height }}</p>
+              <p><strong>Género:</strong> {{ character.gender }}</p>
+              <p><strong>Año de nacimiento:</strong> {{ character.birth_year }}</p>
+              <p><strong>Película:</strong> {{ movie.title }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <ng-template #noCharacters>
-    <p>No se encontraron personajes.</p>
+    <ng-template #noCharacters>
+      <p>No se encontraron personajes.</p>
+    </ng-template>
   </ng-template>
 </div>

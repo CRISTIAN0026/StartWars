@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SwapiService } from '../../swapi.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-characters-list',
@@ -12,6 +13,7 @@ export class CharactersListComponent implements OnInit {
   filteredCharacters: any[] = [];
   searchTerm: string = '';
   movie: any;
+  loading: boolean = false;
 
   constructor(private swapiService: SwapiService, private router: Router) {
     const navigation = this.router.getCurrentNavigation();
@@ -27,13 +29,20 @@ export class CharactersListComponent implements OnInit {
   }
 
   fetchCharacters(urls: string[]) {
-    urls.forEach(url => {
-      this.swapiService.getFromUrl(url).subscribe(response => {
-        console.log(response)
-        this.characters.push(response);
+    this.loading = true; 
+    const characterRequests = urls.map(url => this.swapiService.getFromUrl(url));
+
+    forkJoin(characterRequests).subscribe(
+      responses => {
+        this.characters = responses;
         this.filteredCharacters = this.characters;
-      });
-    });
+        this.loading = false; 
+      },
+      error => {
+        console.error('Error fetching characters', error);
+        this.loading = false; 
+      }
+    );
   }
 
   filterCharacters() {
@@ -42,4 +51,3 @@ export class CharactersListComponent implements OnInit {
     );
   }
 }
-
